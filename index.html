@@ -109,6 +109,16 @@
                 <div class="meter-card"><div class="meter-header"><span class="meter-label">Hardware Delivery</span><span class="meter-pct">100%</span></div><div class="meter-track"><div class="meter-fill" style="width: 100%; background: var(--success);"></div></div></div>
                 <div class="meter-card"><div class="meter-header"><span class="meter-label">IAM Provisioning</span><span id="iam-pct" class="meter-pct" style="color:var(--warning)">65%</span></div><div class="meter-track"><div id="iam-bar" class="meter-fill" style="width: 65%; background: var(--warning);"></div></div></div>
                 <div class="meter-card"><div class="meter-header"><span class="meter-label">IT Admin</span><span id="admin-status" class="meter-pct" style="color:var(--danger)">Pending</span></div><div class="meter-track"><div id="admin-bar" class="meter-fill" style="width: 15%; background: var(--danger);"></div></div></div>
+                <!-- NEW ODC ACCESS METER -->
+                <div class="meter-card">
+                    <div class="meter-header">
+                        <span class="meter-label">ODC Access</span>
+                        <span id="odc-status" class="meter-pct" style="color:var(--warning)">Pending</span>
+                    </div>
+                    <div class="meter-track">
+                        <div id="odc-bar" class="meter-fill" style="width: 15%; background: var(--warning);"></div>
+                    </div>
+                </div>
             </div>
 
             <div class="data-grid">
@@ -130,6 +140,7 @@
 </div>
 
 <script>
+    // IAM progress simulation
     let progress = 65;
     const interval = setInterval(() => {
         progress += 1;
@@ -141,6 +152,7 @@
         }
     }, 150);
 
+    // Complete function updates all final statuses
     function complete() {
         document.getElementById('kpi-sla-text').innerText = "99.9%";
         document.getElementById('kpi-sla-bar').style.width = "100%";
@@ -156,6 +168,14 @@
         document.getElementById('next-step-text').innerText = "Completed";
         document.getElementById('next-step-text').style.color = "var(--success)";
     }
+
+    // ODC access approval simulation
+    setTimeout(() => {
+        document.getElementById('odc-status').innerText = "Approved";
+        document.getElementById('odc-status').style.color = "var(--success)";
+        document.getElementById('odc-bar').style.width = "100%";
+        document.getElementById('odc-bar').style.background = "var(--success)";
+    }, 5000); // 5-second delay
 </script>
 </body>
 </html>
